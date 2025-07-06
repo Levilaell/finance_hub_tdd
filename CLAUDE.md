@@ -17,15 +17,14 @@ Este arquivo fornece contexto completo ao Claude Code para desenvolvimento TDD d
 - **Banking**: Models, Services, API, Tasks, Frontend completo
 
 ### 🔄 Módulos Parcialmente Implementados
-- Nenhum! Todos os módulos básicos estão completos.
+- **Reports**: Models (Report, ScheduledReport) ✅, Services/Views ⏳
 
 ### ⏳ Módulos Pendentes  
-- **Reports**: Dashboard, relatórios DRE/Fluxo de Caixa
 - **Notifications**: Real-time, WebSocket
 - **Payments**: Stripe, MercadoPago, billing
 
 ### 🎯 Próximo Foco
-**Rule Engine Concluído!** Todos os módulos backend e frontend completos. Pronto para avançar para Reports, Notifications ou Payments.
+**Fase 5.1 Concluída!** Modelos Report e ScheduledReport implementados com TDD (25 testes passando). Próximos passos: Report Services e Views.
 
 ## Stack Tecnológico
 
@@ -371,6 +370,7 @@ def test_connect_bank_account(mock_pluggy, company):
 - **Fase 4.4**: Categories Views/API com TDD ✅
 - **Fase 4.5**: Categories URLs com TDD ✅
 - **Fase 4.6**: Categories Frontend Integration com TDD ✅
+- **Fase 5.1**: Modelos Reports (Report, ScheduledReport) com TDD ✅
 
 ### 🚀 PRÓXIMAS FASES - ORDEM OBRIGATÓRIA
 
@@ -408,8 +408,18 @@ def test_connect_bank_account(mock_pluggy, company):
    - **Operadores suportados**: EQUALS, CONTAINS, STARTS_WITH, ENDS_WITH, GREATER_THAN, LESS_THAN, REGEX, IN_LIST
    - **Features**: Cache de regras, múltiplas condições (AND/OR), performance otimizada
 
+### ✅ Fase 5.1: Reports Models - CONCLUÍDA!
+1. ✅ `test_report_model.py` → `models.py` (Report)
+   - **10 testes passando** para modelo Report
+   - **Features**: Status tracking, file management, metadata, processing time
+   
+2. ✅ `test_scheduled_report_model.py` → `models.py` (ScheduledReport)
+   - **15 testes passando** para modelo ScheduledReport
+   - **Features**: Multiple frequencies (daily/weekly/monthly/quarterly/yearly), recipient management, execution tracking
+   - **Total: 25 testes passando com 94% cobertura nos models**
+
 ### Próximas Grandes Funcionalidades
-1. ⏳ **Reports**: Dashboard, relatórios DRE/Fluxo de Caixa
+1. ⏳ **Reports**: Services (ReportGenerator, PDFExporter), Views/API
 2. ⏳ **Notifications**: Real-time, WebSocket  
 3. ⏳ **Payments**: Stripe, MercadoPago, billing
 
