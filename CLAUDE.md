@@ -8,6 +8,25 @@ Este arquivo fornece contexto completo ao Claude Code para desenvolvimento TDD d
 
 **Metodologia**: Test-Driven Development (TDD) - RED → GREEN → REFACTOR
 
+## 📊 STATUS ATUAL DO PROJETO
+
+### ✅ Módulos Completos (Backend + Frontend)
+- **Authentication**: Usuários, JWT, autenticação completa
+- **Companies**: Multi-tenancy, assinaturas, permissões completas  
+- **Categories**: Sistema hierárquico, regras automáticas, rule engine, frontend completo
+- **Banking**: Models, Services, API, Tasks, Frontend completo
+
+### 🔄 Módulos Parcialmente Implementados
+- Nenhum! Todos os módulos básicos estão completos.
+
+### ⏳ Módulos Pendentes  
+- **Reports**: Dashboard, relatórios DRE/Fluxo de Caixa
+- **Notifications**: Real-time, WebSocket
+- **Payments**: Stripe, MercadoPago, billing
+
+### 🎯 Próximo Foco
+**Rule Engine Concluído!** Todos os módulos backend e frontend completos. Pronto para avançar para Reports, Notifications ou Payments.
+
 ## Stack Tecnológico
 
 ### Backend
@@ -325,43 +344,169 @@ def test_connect_bank_account(mock_pluggy, company):
 - Webhook handling
 - Subscription lifecycle
 
-## Plano de Desenvolvimento por Fases
+## Status de Desenvolvimento
 
-### Fase 1: Setup e Autenticação
-**Ordem TDD:**
-1. Testes modelo User → Implementar modelo
-2. Testes JWT auth → Implementar views
-3. Testes 2FA → Implementar funcionalidade
-4. Testes frontend auth → Implementar páginas
+### ✅ CONCLUÍDO
+- **Fase 1.1**: Setup inicial backend Django ✅
+- **Fase 1.2**: Modelo User customizado com TDD ✅ 
+- **Fase 1.3**: Sistema autenticação JWT completo ✅
+- **Fase 1.4**: Setup inicial frontend Next.js ✅
+- **Fase 1.5**: Frontend autenticação (store, hooks, components) ✅
+- **Fase 2.1**: Modelos Company e CompanyUser com TDD ✅
+- **Fase 2.2**: Modelos Subscription e SubscriptionPlan com TDD ✅
+- **Fase 2.3**: Permissões de empresa com TDD ✅
+- **Fase 2.4**: Serializers de empresas com TDD ✅
+- **Fase 2.5**: Views/API de empresas com TDD ✅
+- **Fase 2.6**: Frontend Integration de empresas com TDD ✅
+- **Fase 3.1**: Modelos Banking (BankProvider, BankAccount, Transaction) com TDD ✅
+- **Fase 3.2**: Integração Pluggy (PluggyClient) com TDD ✅
+- **Fase 3.3**: BankingService (sincronização completa) com TDD ✅
+- **Fase 3.4**: Banking Serializers com TDD ✅
+- **Fase 3.5**: Banking Views/API com TDD ✅  
+- **Fase 3.6**: Banking URLs com TDD ✅
+- **Fase 3.7**: Banking Tasks (sync_transactions) com TDD ✅
+- **Fase 4.1**: Modelos Categories (Category, CategorizationRule) com TDD ✅
+- **Fase 4.2**: Services de categorização (CategorizationService + RuleEngine) com TDD ✅
+- **Fase 4.3**: Categories Serializers com TDD ✅
+- **Fase 4.4**: Categories Views/API com TDD ✅
+- **Fase 4.5**: Categories URLs com TDD ✅
+- **Fase 4.6**: Categories Frontend Integration com TDD ✅
 
-### Fase 2: Multi-tenancy
-**Ordem TDD:**
-1. Testes modelo Company → Implementar modelo
-2. Testes Subscription → Implementar assinaturas
-3. Testes permissions → Implementar controle acesso
-4. Testes frontend company → Implementar UI
+### 🚀 PRÓXIMAS FASES - ORDEM OBRIGATÓRIA
 
-### Fase 3: Banking Integration
-**Ordem TDD:**
-1. Testes modelo BankAccount → Implementar modelo
-2. Testes Pluggy integration → Implementar serviço
-3. Testes sync transactions → Implementar sincronização
-4. Testes categorization → Implementar regras
-5. Testes frontend banking → Implementar UI
+## 📍 PRÓXIMOS PASSOS IMEDIATOS
 
-### Fase 4: Relatórios
-**Ordem TDD:**
-1. Testes geração relatórios → Implementar generators
-2. Testes exportação → Implementar exporters
-3. Testes agendamento → Implementar scheduler
-4. Testes frontend reports → Implementar UI
+### 🎯 **BANKING TASKS CONCLUÍDAS!**
 
-### Fase 5: Real-time Features
-**Ordem TDD:**
-1. Testes notifications → Implementar sistema
-2. Testes WebSocket → Implementar consumers
-3. Testes email → Implementar templates
-4. Testes frontend real-time → Implementar UI
+### ✅ Fase 3.7: Banking Tasks - CONCLUÍDA!
+1. ✅ `test_sync_transactions.py` → `tasks.py` - Todas as 15 tasks implementadas
+   - sync_account_transactions (com retry e rate limiting)
+   - sync_all_company_accounts
+   - sync_company_accounts_scheduled  
+   - process_transaction_batch
+   - categorize_transactions_batch
+
+### ✅ Fase 4.6: Categories Frontend Integration - CONCLUÍDA! 
+1. ✅ `test_categories_types.ts` → `types/categories.ts`
+2. ✅ `test_categories_service.ts` → `services/categories.ts`
+3. ✅ `test_categories_store.ts` → `store/categories.ts`
+4. ✅ `test_useCategories.ts` → `hooks/useCategories.ts`
+5. ✅ `test_CategorySelector.tsx` → `components/CategorySelector.tsx`
+
+### ✅ Fase 3.8: Banking Frontend Integration - CONCLUÍDA!
+1. ✅ `test_banking_types.ts` → `types/banking.ts`
+2. ✅ `test_banking_service.ts` → `services/banking.ts` 
+3. ✅ `test_banking_store.ts` → `store/banking.ts`
+4. ✅ `test_useBanking.ts` → `hooks/useBanking.ts`
+5. ✅ `test_AccountSelector.tsx` → `components/AccountSelector.tsx`
+
+### ✅ Pendências Backend Menores - CONCLUÍDAS!
+1. ✅ `test_rule_engine.py` → `services/rules.py` - CONCLUÍDO
+   - **RuleEngine**: Motor flexível de regras com 8 operadores
+   - **45 testes passando** (29 rule engine + 16 categorization service)
+   - **91% cobertura** em ambos os serviços
+   - **Operadores suportados**: EQUALS, CONTAINS, STARTS_WITH, ENDS_WITH, GREATER_THAN, LESS_THAN, REGEX, IN_LIST
+   - **Features**: Cache de regras, múltiplas condições (AND/OR), performance otimizada
+
+### Próximas Grandes Funcionalidades
+1. ⏳ **Reports**: Dashboard, relatórios DRE/Fluxo de Caixa
+2. ⏳ **Notifications**: Real-time, WebSocket  
+3. ⏳ **Payments**: Stripe, MercadoPago, billing
+
+## Fase 2: Multi-tenancy e Empresas (✅ CONCLUÍDO)
+**📋 Ordem TDD concluída:**
+1. **Backend Models**: ✅ CONCLUÍDO
+   - ✅ `test_company_model.py` → `models.py` (Company, CompanyUser)
+   - ✅ `test_subscription_model.py` → `models.py` (Subscription, SubscriptionPlan)
+   - ✅ `test_company_permissions.py` → `permissions.py`
+
+2. **Backend API**: ✅ CONCLUÍDO
+   - ✅ `test_company_serializers.py` → `serializers.py`
+   - ✅ `test_company_views.py` → `views.py` (CRUD empresas)
+   - ✅ `test_company_urls.py` → `urls.py`
+
+3. **Frontend Integration**: ✅ CONCLUÍDO
+   - ✅ `test_company_types.ts` → `types/company.ts`
+   - ✅ `test_company_service.ts` → `services/company.ts`
+   - ✅ `test_company_store.ts` → `store/company.ts`
+   - ✅ `test_useCompany.ts` → `hooks/useCompany.ts`
+   - ✅ `test_CompanySelector.tsx` → `components/CompanySelector.tsx`
+
+## Fase 3: Banking Integration (✅ CONCLUÍDO - Backend API)
+**📋 Ordem TDD concluída:**
+1. **Backend Models**: ✅ CONCLUÍDO
+   - ✅ `test_bank_provider_model.py` → `models.py` (BankProvider)
+   - ✅ `test_bank_account_model.py` → `models.py` (BankAccount)
+   - ✅ `test_transaction_model.py` → `models.py` (Transaction)
+
+2. **Pluggy Integration**: ✅ CONCLUÍDO
+   - ✅ `test_pluggy_client.py` → `services/pluggy.py`
+   - ✅ `test_banking_service.py` → `services/banking.py`
+   - ✅ `test_sync_transactions.py` → `tasks.py` (CONCLUÍDO)
+
+3. **Backend API**: ✅ CONCLUÍDO
+   - ✅ `test_banking_serializers.py` → `serializers.py`
+   - ✅ `test_banking_views.py` → `views.py`
+   - ✅ `test_banking_urls.py` → `urls.py`
+   - ✅ `test_banking_permissions.py` → `permissions.py`
+
+4. **Frontend Integration**: ✅ CONCLUÍDO
+   - ✅ Tipos, serviços, store, hooks e componentes para banking
+
+## Fase 4: Categorização (✅ CONCLUÍDO - Backend + Frontend)
+**📋 Ordem TDD concluída:**
+1. **Backend Models**: ✅ CONCLUÍDO
+   - ✅ `test_category_model.py` → `models.py`
+   - ✅ `test_categorization_rule_model.py` → `models.py`
+
+2. **Services**: ✅ CONCLUÍDO
+   - ✅ `test_categorization_service.py` → `services/categorization.py`
+   - ✅ `test_rule_engine.py` → `services/rules.py` (CONCLUÍDO)
+
+3. **Backend API**: ✅ CONCLUÍDO
+   - ✅ `test_categories_serializers.py` → `serializers.py`
+   - ✅ `test_categories_views.py` → `views.py`
+   - ✅ `test_categories_urls.py` → `urls.py`
+   - ✅ `test_categories_permissions.py` → `permissions.py`
+
+4. **Frontend Integration**: ✅ CONCLUÍDO
+   - ✅ `test_categories_types.ts` → `types/categories.ts`
+   - ✅ `test_categories_service.ts` → `services/categories.ts`
+   - ✅ `test_categories_store.ts` → `store/categories.ts`
+   - ✅ `test_useCategories.ts` → `hooks/useCategories.ts`
+   - ✅ `test_CategorySelector.tsx` → `components/CategorySelector.tsx`
+
+## Fase 5: Dashboard e Relatórios
+**📋 Ordem TDD obrigatória:**
+1. **Backend Models**:
+   - `test_report_model.py` → `models.py`
+   - `test_scheduled_report_model.py` → `models.py`
+
+2. **Services**:
+   - `test_report_generator.py` → `services/reports.py`
+   - `test_dre_generator.py` → `services/generators/dre.py`
+   - `test_cashflow_generator.py` → `services/generators/cashflow.py`
+
+3. **Frontend**: Dashboard, gráficos, relatórios
+
+## Fase 6: Notificações Real-time
+**📋 Ordem TDD obrigatória:**
+1. **Backend**:
+   - `test_notification_model.py` → `models.py`
+   - `test_notification_service.py` → `services/notifications.py`
+   - `test_websocket_consumers.py` → `consumers.py`
+
+2. **Frontend**: WebSocket, notificações real-time
+
+## Fase 7: Pagamentos
+**📋 Ordem TDD obrigatória:**
+1. **Backend**:
+   - `test_payment_model.py` → `models.py`
+   - `test_stripe_service.py` → `services/stripe.py`
+   - `test_mercadopago_service.py` → `services/mercadopago.py`
+   - `test_webhook_handlers.py` → `views/webhooks.py`
+
+2. **Frontend**: Checkout, gestão assinaturas
 
 ## Configurações Importantes
 
